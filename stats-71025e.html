@@ -1,0 +1,29 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>إحصائيات برجر على الفحم</title>
+<style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:#fff7f2;color:#2b1408}
+header{background:#A84315;color:#fff;padding:22px 16px;text-align:center}h1{margin:0;font-size:22px}header p{margin:6px 0 0;opacity:.9;font-size:14px}
+main{max-width:520px;margin:auto;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.c{background:#fff;border:2px solid #f1d3c2;border-radius:16px;padding:16px;text-align:center}.c.big{grid-column:1/-1;border-color:#A84315}
+.n{font-size:40px;font-weight:800;color:#A84315;line-height:1.1}.big .n{font-size:56px}.l{font-size:15px;margin-top:6px}
+button{grid-column:1/-1;background:#A84315;color:#fff;border:0;border-radius:12px;padding:14px;font-size:17px;font-weight:700}
+small{grid-column:1/-1;text-align:center;color:#8a6a5a}</style></head><body>
+<header><h1>📊 إحصائيات موقع برجر على الفحم</h1><p>كل الأرقام من أول يوم انطلق الموقع</p></header>
+<main>
+<div class="c big"><div class="n" id="visits">…</div><div class="l">👀 زيارات الموقع</div></div>
+<div class="c big"><div class="n" id="orders">…</div><div class="l">🛒 طلبات انرسلت بالواتساب</div></div>
+<div class="c big"><div class="n" id="rate">…</div><div class="l">📈 نسبة اللي طلبوا من الزوار</div></div>
+<div class="c"><div class="n" id="call">…</div><div class="l">📞 ضغطوا اتصال</div></div>
+<div class="c"><div class="n" id="whatsapp">…</div><div class="l">💬 فتحوا الواتساب</div></div>
+<div class="c"><div class="n" id="talabat">…</div><div class="l">🛵 راحوا طلبات</div></div>
+<div class="c"><div class="n" id="instagram">…</div><div class="l">📸 فتحوا الإنستا</div></div>
+<div class="c big"><div class="n" id="map">…</div><div class="l">📍 فتحوا الموقع على الخريطة</div></div>
+<button onclick="load()">🔄 حدّث الأرقام</button><small id="upd"></small>
+</main>
+<script>
+var NS="f7am-burgers-15afdc16",K=["visits","orders","call","whatsapp","talabat","instagram","map"],V={};
+function g(k){return fetch("https://abacus.jasoncameron.dev/get/"+NS+"/"+k,{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){return j.value||0}).catch(function(){return 0})}
+function load(){Promise.all(K.map(g)).then(function(a){K.forEach(function(k,i){V[k]=a[i];document.getElementById(k).textContent=a[i].toLocaleString("en")});
+ document.getElementById("rate").textContent=V.visits?(Math.round(V.orders/V.visits*1000)/10)+"%":"0%";
+ document.getElementById("upd").textContent="آخر تحديث: "+new Date().toLocaleTimeString("ar-AE",{timeZone:"Asia/Dubai",hour:"2-digit",minute:"2-digit"})})}
+load();setInterval(load,60000);
+</script></body></html>
